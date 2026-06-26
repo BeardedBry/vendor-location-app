@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { LocationInfo } from './components/LocationInfo'
 
 
 
-type LocationApiDataType = {
+export type LocationApiDataType = {
   data: {
     alets: Array<unknown>
     amenities: Array<unknown>
     css: String
     events: Array<unknown>
     kiosk: Object
-    locations: Array<unknown>
+    locations: Array<{id: number}>
     schedules: Array<Object>
     screen: Object
     venue: Object
@@ -27,7 +28,7 @@ type LocationApiDataType = {
 function App() {
 
   const [apiData, setApiData] = useState<null | LocationApiDataType>();
-  const [selectedLocation, setSelectedLocation] = useState<null>();
+  const [selectedLocationId, setSelectedLocationId] = useState<number>();
 
   // Fetch data (runs twice only in dev mode)
   useEffect(() => {
@@ -44,6 +45,10 @@ function App() {
   }, [])
 
 
+  const LocationButtonClick = (id: Number) => {
+    setSelectedLocationId(id);
+  }
+
 
   if (!apiData) {
     return <>...Loading initial data</>
@@ -54,40 +59,28 @@ function App() {
     <>
       <section className='flex flex-col sm:flex-row w-full h-screen'>
 
-        <div className='bg-red-100 w-full py-6'>
-          <div className='overflow-y-scroll px-6 h-full'>
-            <ul className='flex flex-col gap-6 text-right'>
+        <div className='w-full py-6'>
+          <div className='overflow-y-scroll h-full'>
+            <div className='flex flex-col gap-6 text-right'>
               {apiData.data.locations.map(location => {
-                return <li>{location?.name}</li>
+                return (
+                  <button 
+                    className='rounded p-2 hover:text-blue-400 hover:bg-gray-50'
+                    onClick={() => LocationButtonClick(location.id)}
+                    >
+                      {location?.name}
+                    </button>
+                )
               })}
-            </ul>
-          </div>
-        </div>
-
-        <div className='bg-green-100 w-full min-w-md p-4'>
-          <div className="flex flex-col bg-green-200 gap-4">
-
-            <div className='flex-1 min-h-32'>
-              selected Location image
-              <img src="" />
-            </div>
-
-            <div className='flex w-full justify-between mb-12'>
-              <p>
-                Selection Logo image
-              </p>
-              <p>
-                Location name
-              </p>
-            </div>
-
-            <div className=''>
-              location other data
             </div>
           </div>
         </div>
 
-        <div className="w-full p-4">
+        <div className='w-full sm:min-w-md md:min-w-lg lg:min-w-xl flex-1 px-4 sm:px-0'>
+          <LocationInfo apiData={apiData} locationId={selectedLocationId} />
+        </div>
+
+        <div className="w-full p-4 ">
         </div>
       </section>
 
