@@ -1,13 +1,12 @@
 # README
 
-git clone project and run with ```npm run dev```
+git clone project and run with `npm run dev`
 
+default url: `http://localhost:5173/`
 
 SPA, made with Vite, react and TS.
 
-
-
-----------------------------
+---
 
 # React + TypeScript + Vite
 
