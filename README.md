@@ -1,6 +1,6 @@
 # README
 
-git clone project and run with `npm run dev`
+git clone project, install dependencies and run with `npm run dev`
 
 default url: `http://localhost:5173/`
 
