@@ -41,15 +41,16 @@ export const AdPanel = ({adData}) => {
                 />
             );
         } else {
-            return <img src={url} />
+            return <img src={url}/>
         }
     }
 
 
     return (
-        <div className="h-full w-full">
-            {ShowImageOrVideo(currentAd?.ads[0]?.img_url)}
-            {/* <img src={currentAd?.ads[0]?.img_url} /> */}
+        <div className="overflow-clip">
+            <div className="animate-[fadeInOut_300ms_ease-in-out] overflow-clip hover:cursor-pointer" key={currentAdIndex}>
+                {ShowImageOrVideo(currentAd?.ads[0]?.img_url)}
+            </div>
         </div>
     )
 

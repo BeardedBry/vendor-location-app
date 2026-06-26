@@ -182,3 +182,15 @@
     border-right-color: var(--border);
   }
 }
+
+
+@keyframes fadeInOut {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(1%);
+  }
+}

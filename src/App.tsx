@@ -12,7 +12,7 @@ export type LocationApiDataType = {
     css: String
     events: Array<unknown>
     kiosk: Object
-    locations: Array<{id: number}>
+    locations: Array<{ id: number }>
     schedules: Array<Object>
     screen: Object
     venue: Object
@@ -65,12 +65,13 @@ function App() {
             <div className='flex flex-col gap-6 text-right'>
               {apiData.data.locations.map(location => {
                 return (
-                  <button 
-                    className='rounded p-2 hover:text-blue-400 hover:bg-gray-50'
+                  <button
+                    key={location?.id}
+                    className='rounded p-2 hover:text-blue-400 hover:bg-gray-50 hover:cursor-pointer'
                     onClick={() => LocationButtonClick(location.id)}
-                    >
-                      {location?.name}
-                    </button>
+                  >
+                    {location?.name}
+                  </button>
                 )
               })}
             </div>
@@ -81,8 +82,11 @@ function App() {
           <LocationInfo apiData={apiData} locationId={selectedLocationId} />
         </div>
 
-        <div className="w-full p-4 sm:p-0">
-          <AdPanel adData={apiData?.data?.schedules} />
+        <div className="w-full h-full p-4 sm:px-1 sm:py-0 bg-gray-50 ml-6 flex flex-col">
+          <div className='mt-5'>
+            <p className='text-xs pb-1'>Ads:</p>
+            <AdPanel adData={apiData?.data?.schedules} />
+          </div>
         </div>
       </section>
 
