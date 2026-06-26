@@ -10,10 +10,8 @@ export const LocationInfo = ({ apiData, locationId }: LocationInfoProps) => {
 
     const selectedLocation = apiData.data.locations.find(locations => locations.id == locationId);
 
-    console.dir(selectedLocation);
-
     if (!selectedLocation) {
-        return <>Select a valid location</>
+        return <div className="h-full w-full flex py-24 justify-center bg-gray-100">Select a valid location</div>
     }
 
 

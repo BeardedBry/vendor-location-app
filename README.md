@@ -1,3 +1,14 @@
+# README
+
+git clone project and run with ```npm run dev```
+
+
+SPA, made with Vite, react and TS.
+
+
+
+----------------------------
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.

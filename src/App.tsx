@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { LocationInfo } from './components/LocationInfo'
+import { AdPanel } from './components/AdPanel'
 
 
 
@@ -80,16 +81,11 @@ function App() {
           <LocationInfo apiData={apiData} locationId={selectedLocationId} />
         </div>
 
-        <div className="w-full p-4 ">
+        <div className="w-full p-4 sm:p-0">
+          <AdPanel adData={apiData?.data?.schedules} />
         </div>
       </section>
 
-      {/* <section id="spacer"></section> */}
-      {/* <footer className='h-14 w-full flex flex-col justify-center items-center'>
-          <p className='text-xs'>
-          data last updated: { new Date(apiData?.meta?.requestedAt)?.toString()}
-          </p>
-      </footer> */}
     </>
   )
 }
